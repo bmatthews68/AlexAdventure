@@ -1,0 +1,19 @@
+{
+  "intents": [
+    {
+      "intent": "DescribeLocationIntent"
+    },
+    {
+      "intent": "MoveIntent",
+      "slots": [
+        {
+          "name": "direction",
+          "type": "AMAZON.STRING"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}

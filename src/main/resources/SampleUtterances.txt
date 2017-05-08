@@ -1,0 +1,4 @@
+DescribeLocationIntent look around
+DescribeLocationIntent where am i
+
+MoveIntent go {direction}
