@@ -2,9 +2,11 @@ package com.btmatthews.alexa.adventure.services.impl;
 
 import com.btmatthews.alexa.adventure.domain.Location;
 import com.btmatthews.alexa.adventure.services.LocationService;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 
+@Component
 public class LocationServiceImpl implements LocationService {
 
     @Override
