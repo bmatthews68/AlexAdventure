@@ -13,6 +13,42 @@
       ]
     },
     {
+      "intent": "NorthIntent"
+    },
+    {
+      "intent": "NorthEastIntent"
+    },
+    {
+      "intent": "NorthWestIntent"
+    },
+    {
+      "intent": "SouthIntent"
+    },
+    {
+      "intent": "SouthEastIntent"
+    },
+    {
+      "intent": "SouthWestIntent"
+    },
+    {
+      "intent": "EastIntent"
+    },
+    {
+      "intent": "WestIntent"
+    },
+    {
+      "intent": "UpIntent"
+    },
+    {
+      "intent": "DownIntent"
+    },
+    {
+      "intent": "InIntent"
+    },
+    {
+      "intent": "OutIntent"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }
   ]

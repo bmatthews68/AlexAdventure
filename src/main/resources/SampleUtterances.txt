@@ -2,3 +2,33 @@ DescribeLocationIntent look around
 DescribeLocationIntent where am i
 
 MoveIntent go {direction}
+MoveIntent climb {direction}
+MoveIntent walk {direction}
+MoveIntent run {direction}
+MoveIntent crawl {direction}
+
+NorthIntent north
+
+NorthEastIntent north east
+
+NorthWestIntent north west
+
+SouthIntent south
+
+SouthEastIntent south east
+
+SouthWestIntent south west
+
+EastIntent east
+
+WestIntent west
+
+UpIntent up
+
+DownIntent down
+
+InIntent in
+InIntent enter
+
+OutIntent out
+OutIntent exit

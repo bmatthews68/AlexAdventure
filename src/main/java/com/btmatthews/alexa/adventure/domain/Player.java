@@ -14,14 +14,18 @@ public class Player {
 
     private final String name;
 
-    private final List<Artifact> artifacts;
+    private final String locationId;
+
+    private final List<String> artifactIds;
 
     public Player(final String id,
                   final String name,
-                  final List<Artifact> artifacts) {
+                  final String locationId,
+                  final List<String> artifactIds) {
         this.id = id;
         this.name = name;
-        this.artifacts = artifacts;
+        this.locationId = locationId;
+        this.artifactIds = artifactIds;
     }
 
     public String getId() {
@@ -32,7 +36,11 @@ public class Player {
         return name;
     }
 
-    public List<Artifact> getArtifacts() {
-        return artifacts;
+    public String getLocationId() {
+        return locationId;
+    }
+
+    public List<String> getArtifactIds() {
+        return artifactIds;
     }
 }
