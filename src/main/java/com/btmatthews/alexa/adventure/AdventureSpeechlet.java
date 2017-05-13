@@ -31,7 +31,6 @@ public final class AdventureSpeechlet implements Speechlet {
     public void onSessionStarted(final SessionStartedRequest request,
                                  final Session session)
             throws SpeechletException {
-
     }
 
     @Override

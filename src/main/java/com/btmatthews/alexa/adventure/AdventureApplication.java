@@ -8,13 +8,17 @@ package com.btmatthews.alexa.adventure;
 
 import com.amazon.speech.speechlet.Speechlet;
 import com.amazon.speech.speechlet.servlet.SpeechletServlet;
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
+@EnableMongoRepositories
+@EnableEncryptableProperties
 public class AdventureApplication {
 
     public static void main(String[] args) {
@@ -32,6 +36,6 @@ public class AdventureApplication {
     @Bean
     @Autowired
     public ServletRegistrationBean adventureServlet(final SpeechletServlet speechletServlet) {
-        return new ServletRegistrationBean(speechletServlet, "/adventure");
+        return new ServletRegistrationBean(speechletServlet, "/skill");
     }
 }
