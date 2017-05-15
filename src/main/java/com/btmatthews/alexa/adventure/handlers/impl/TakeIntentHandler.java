@@ -1,9 +1,3 @@
-/*
- * Copyright (c) 2017 Brian Matthews <brian@btmatthews.com>
- *
- * All rights reserved. No warranty, explicit or implicit, provided.
- */
-
 package com.btmatthews.alexa.adventure.handlers.impl;
 
 import com.btmatthews.alexa.adventure.domain.Game;
@@ -16,11 +10,10 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public final class DescribeLocationIntentHandler implements IntentHandler {
-
+public class TakeIntentHandler implements IntentHandler {
     @Override
-    public boolean handles(final String intentName) {
-        return "DescribeLocationIntent".equals(intentName);
+    public boolean handles(String intentName) {
+        return false;
     }
 
     @Override
@@ -29,7 +22,6 @@ public final class DescribeLocationIntentHandler implements IntentHandler {
                                  final Location location,
                                  final String intentName,
                                  final Map<String, String> slots) {
-
-        return IntentResponse.done(location.getDescription());
+        return null;
     }
 }

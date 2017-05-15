@@ -25,8 +25,11 @@ public class Location {
 
     private final Map<Direction, String> exits;
 
+    private final List<ActionDescriptor> actions;
+
     public Location(final String id, final String name, final String description, final List<String> players,
-                    final List<String> characters, final List<String> artifacts, final Map<Direction, String> exits) {
+                    final List<String> characters, final List<String> artifacts, final Map<Direction, String> exits,
+                    final List<ActionDescriptor> actions) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -34,6 +37,7 @@ public class Location {
         this.characters = characters;
         this.artifacts = artifacts;
         this.exits = exits;
+        this.actions = actions;
     }
 
     public String getId() {
@@ -62,5 +66,9 @@ public class Location {
 
     public Map<Direction, String> getExits() {
         return exits;
+    }
+
+    public List<ActionDescriptor> getActions() {
+        return actions;
     }
 }

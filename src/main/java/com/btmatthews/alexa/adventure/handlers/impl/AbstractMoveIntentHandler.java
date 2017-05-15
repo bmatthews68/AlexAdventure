@@ -1,12 +1,11 @@
 package com.btmatthews.alexa.adventure.handlers.impl;
 
-import com.amazon.speech.slu.Intent;
-import com.amazon.speech.speechlet.SpeechletResponse;
-import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.btmatthews.alexa.adventure.domain.Direction;
+import com.btmatthews.alexa.adventure.domain.Game;
 import com.btmatthews.alexa.adventure.domain.Location;
 import com.btmatthews.alexa.adventure.domain.Player;
 import com.btmatthews.alexa.adventure.handlers.IntentHandler;
+import com.btmatthews.alexa.adventure.handlers.IntentResponse;
 import com.btmatthews.alexa.adventure.services.LocationService;
 import com.btmatthews.alexa.adventure.services.PlayerService;
 
@@ -28,7 +27,7 @@ public abstract class AbstractMoveIntentHandler implements IntentHandler {
         this.locationService = locationService;
     }
 
-    protected abstract Direction resolveDirection(Intent intent);
+    protected abstract Direction resolveDirection(Map<String, String> slots);
 
     @Override
     public boolean handles(final String intentName) {
@@ -36,34 +35,32 @@ public abstract class AbstractMoveIntentHandler implements IntentHandler {
     }
 
     @Override
-    public SpeechletResponse handle(final Intent intent) {
+    public IntentResponse handle(final Game game,
+                                 final Player player,
+                                 final Location location,
+                                 final String intentName,
+                                 final Map<String, String> slots) {
 
-        final Player player = playerService.getPlayer();
-        final Location location = locationService.getLocation(player.getLocationId());
         final Map<Direction, String> exits = location.getExits();
 
-        final PlainTextOutputSpeech speech = new PlainTextOutputSpeech();
-
-        final Direction direction = resolveDirection(intent);
+        final Direction direction = resolveDirection(slots);
         if (direction == Direction.UNKNOWN) {
-            speech.setText("I did not understand the direction you asked for.");
+            return IntentResponse.done("I did not understand the direction you asked for.");
         } else {
             final String newLocationId = exits.get(direction);
             if (newLocationId == null) {
-                speech.setText("You cannot go in that direction.");
+                return IntentResponse.done("You cannot go in that direction.");
             } else if (newLocationId.equals(location.getId())) {
-                speech.setText("You have gone around in a circle.");
+                return IntentResponse.done("You have gone around in a circle.");
             } else {
                 final Location newLocation = locationService.getLocation(newLocationId);
                 if (newLocation == null) {
                     throw new RuntimeException("");
                 } else {
                     playerService.updateLocation(player, newLocation);
-                    speech.setText(newLocation.getDescription());
+                    return IntentResponse.done(newLocation.getDescription());
                 }
             }
         }
-
-        return SpeechletResponse.newTellResponse(speech);
     }
 }

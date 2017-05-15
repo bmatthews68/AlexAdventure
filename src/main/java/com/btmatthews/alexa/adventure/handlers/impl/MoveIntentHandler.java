@@ -6,14 +6,14 @@
 
 package com.btmatthews.alexa.adventure.handlers.impl;
 
-import com.amazon.speech.slu.Intent;
-import com.amazon.speech.slu.Slot;
 import com.btmatthews.alexa.adventure.domain.Direction;
 import com.btmatthews.alexa.adventure.services.DirectionService;
 import com.btmatthews.alexa.adventure.services.LocationService;
 import com.btmatthews.alexa.adventure.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 @Component
 public final class MoveIntentHandler extends AbstractMoveIntentHandler {
@@ -29,13 +29,13 @@ public final class MoveIntentHandler extends AbstractMoveIntentHandler {
     }
 
     @Override
-    public Direction resolveDirection(final Intent intent) {
+    public Direction resolveDirection(final Map<String, String> slots) {
 
-        final Slot directionSlot = intent.getSlot("direction");
+        final String directionSlot = slots.get("direction");
         if (directionSlot == null) {
             throw new RuntimeException("");
         }
 
-        return directionService.mapDirection(directionSlot.getValue());
+        return directionService.mapDirection(directionSlot);
     }
 }

@@ -1,0 +1,6 @@
+management:
+  security:
+    enabled: false
+  health:
+    mongo:
+      enabled: true

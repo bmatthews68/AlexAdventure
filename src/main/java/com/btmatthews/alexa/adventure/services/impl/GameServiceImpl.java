@@ -1,15 +1,15 @@
 package com.btmatthews.alexa.adventure.services.impl;
 
 import com.btmatthews.alexa.adventure.dao.GameRepository;
-import com.btmatthews.alexa.adventure.domain.GameDescriptor;
-import com.btmatthews.alexa.adventure.domain.IntentDescriptor;
-import com.btmatthews.alexa.adventure.domain.UtteranceDescriptor;
+import com.btmatthews.alexa.adventure.domain.*;
+import com.btmatthews.alexa.adventure.domain.Character;
 import com.btmatthews.alexa.adventure.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class GameServiceImpl implements GameService {
@@ -19,6 +19,19 @@ public class GameServiceImpl implements GameService {
     @Autowired
     public GameServiceImpl(final GameRepository gameRepository) {
         this.gameRepository = gameRepository;
+    }
+
+    @Override
+    public GameDescriptor getGameDescriptor(final String gameId) {
+        return gameRepository.findOne(gameId);
+    }
+
+    @Override
+    public Game getGame(final String userId, final String gameId) {
+        return new Game(new Player(userId, "", "", Collections.emptyList()),
+                Collections.emptyMap(),
+                Collections.emptyMap(),
+                Collections.emptyMap());
     }
 
     @Override

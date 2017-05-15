@@ -18,6 +18,7 @@ public class LocationServiceImpl implements LocationService {
                 Collections.singletonList("P1"),
                 Collections.emptyList(),
                 Collections.emptyList(),
-                Collections.emptyMap());
+                Collections.emptyMap(),
+                Collections.emptyList());
     }
 }

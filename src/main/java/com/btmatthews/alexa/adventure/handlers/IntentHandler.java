@@ -6,12 +6,19 @@
 
 package com.btmatthews.alexa.adventure.handlers;
 
-import com.amazon.speech.slu.Intent;
-import com.amazon.speech.speechlet.SpeechletResponse;
+import com.btmatthews.alexa.adventure.domain.Game;
+import com.btmatthews.alexa.adventure.domain.Location;
+import com.btmatthews.alexa.adventure.domain.Player;
+
+import java.util.Map;
 
 public interface IntentHandler {
 
     boolean handles(String intentName);
 
-    SpeechletResponse handle(Intent intent);
+    IntentResponse handle(Game game,
+                          Player player,
+                          Location location,
+                          String intentName,
+                          Map<String, String> slots);
 }
